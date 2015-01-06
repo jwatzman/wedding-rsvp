@@ -2,9 +2,9 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Foo</title>
+		<title>{% block title %}{% endblock %}</title>
 	</head>
 	<body>
-		<p>{{ somevar }}</p>
+	{% block body %}{% endblock %}
 	</body>
 </html>

@@ -1,0 +1,17 @@
+{% extends "page.html" %}
+
+{% block title %}Admin{% endblock %}
+{% block body %}
+<table>
+	<tr>
+		<td>Party Name</td>
+		<td>Comment</td>
+	</tr>
+	{% for party in parties %}
+	<tr>
+		<td>{{ party.name }}</td>
+		<td>{{ party.comment }}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}
