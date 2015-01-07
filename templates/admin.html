@@ -2,6 +2,7 @@
 
 {% block title %}Admin{% endblock %}
 {% block body %}
+<h1>Parties</h1>
 <table>
 	<tr>
 		<td>Party Name</td>
@@ -14,4 +15,9 @@
 	</tr>
 	{% endfor %}
 </table>
+<h1>Create New Party</h1>
+<form action="admin.php" method="POST">
+	Name: <input type="text" name="new_party_name">
+	<input type="submit">
+</form>
 {% endblock %}
