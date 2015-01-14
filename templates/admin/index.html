@@ -7,11 +7,13 @@
 	<tr>
 		<td>Party Name</td>
 		<td>Comment</td>
+		<td>Rehearsal</td>
 	</tr>
 	{% for party in parties %}
 	<tr>
 		<td>{{ party.name }}</td>
 		<td>{{ party.comment }}</td>
+		<td><b>{% if party.rehearsal_invited %}Y{% else %}N{% endif %}</b>
 		<td><a href="edit-party.php?id={{party.id}}">Edit</a></td>
 	</tr>
 	{% endfor %}
@@ -19,6 +21,8 @@
 <h1>Create New Party</h1>
 <form action="index.php" method="POST">
 	Name: <input type="text" name="new_party_name">
+	<input type="checkbox" name="rehearsal" id="rehearsal" value="rehearsal">
+	<label for="rehearsal">Rehearsal Dinner</label>
 	<input type="submit">
 </form>
 {% endblock %}
