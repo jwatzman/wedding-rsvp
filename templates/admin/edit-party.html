@@ -1,0 +1,40 @@
+{% extends "page.html" %}
+{% import _self as self %}
+
+{% macro response(v) %}
+{% if v is sameas(0) %}
+N
+{% elseif v is sameas(1) %}
+Y
+{% endif %}
+{% endmacro %}
+
+{% block title %}Edit Party{% endblock %}
+{% block body %}
+<h1>Edit Party: {{ party_name }}</h1>
+<table>
+	<tr>
+		<td>Name</td>
+		<td>Response</td>
+		<td>Rehearsal Response</td>
+	</tr>
+	{% for guest in guests %}
+	<tr>
+		{% if guest.is_plus_one %}
+		<td>{{ guest.name }} <i>(plus-one)</i></td>
+		{% else %}
+		<td>{{ guest.name }}</td>
+		{% endif %}
+		<td><b>{{ self.response(guest.response) }}</b></td>
+		<td><b>{{ self.response(guest.rehearsal_response) }}</b></td>
+	</tr>
+	{% endfor %}
+</table>
+<h1>Add Guest</h1>
+<form action="edit-party.php?id={{id}}" method="POST">
+	Name: <input type="text" name="new_guest_name">
+	<input type="checkbox" name="plus_one" id="plus_one" value="plus_one">
+	<label for="plus_one">Plus One</label>
+	<input type="submit">
+</form>
+{% endblock %}
