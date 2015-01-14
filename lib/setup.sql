@@ -3,6 +3,7 @@ CREATE TABLE parties (
 	id INT AUTO_INCREMENT NOT NULL,
 	name TEXT NOT NULL DEFAULT "",
 	comment TEXT NOT NULL DEFAULT "",
+	rehearsal_invited BOOL NOT NULL DEFAULT 0,
 	PRIMARY KEY (id)
 ) DEFAULT CHARSET=utf8;
 
@@ -12,6 +13,7 @@ CREATE TABLE guests (
 	party_id INT NOT NULL,
 	name TEXT NOT NULL DEFAULT "",
 	response BOOL DEFAULT NULL,
+	rehearsal_response BOOL DEFAULT NULL,
 	is_plus_one BOOL NOT NULL DEFAULT 0,
 	PRIMARY KEY (id)
 ) DEFAULT CHARSET=utf8;
