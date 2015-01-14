@@ -12,12 +12,12 @@
 	<tr>
 		<td>{{ party.name }}</td>
 		<td>{{ party.comment }}</td>
-		<td><a href="admin-edit-party.php?id={{party.id}}">Edit</a></td>
+		<td><a href="edit-party.php?id={{party.id}}">Edit</a></td>
 	</tr>
 	{% endfor %}
 </table>
 <h1>Create New Party</h1>
-<form action="admin.php" method="POST">
+<form action="index.php" method="POST">
 	Name: <input type="text" name="new_party_name">
 	<input type="submit">
 </form>

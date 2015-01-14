@@ -1,6 +1,6 @@
 <?php
 
-require_once 'lib/lib.php';
+require_once '../lib/lib.php';
 
 $id = idx($_GET, 'id');
 if ($id === null) {

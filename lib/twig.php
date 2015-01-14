@@ -4,7 +4,7 @@ function t() {
 	static $twig = null;
 	if (!$twig) {
 		$twig = new Twig_Environment(
-			new Twig_Loader_Filesystem('templates'),
+			new Twig_Loader_Filesystem(__DIR__.'/../templates'),
 			array(
 				'auto_reload' => true,
 				'autoescape' => true,

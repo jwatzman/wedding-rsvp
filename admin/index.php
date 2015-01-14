@@ -1,6 +1,6 @@
 <?php
 
-require_once 'lib/lib.php';
+require_once '../lib/lib.php';
 
 $new_party_name = idx($_POST, 'new_party_name');
 if (strlen($new_party_name) > 0) {
@@ -11,4 +11,4 @@ if (strlen($new_party_name) > 0) {
 
 $parties = db()->query('SELECT id, name, comment FROM parties');
 
-echo t()->render('admin.html', array('parties' => $parties));
+echo t()->render('admin/index.html', array('parties' => $parties));

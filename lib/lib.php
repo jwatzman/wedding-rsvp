@@ -3,9 +3,9 @@
 error_reporting(E_ALL);
 ini_set('default_charset', 'utf-8');
 
-require_once 'vendor/autoload.php';
-require_once 'twig.php';
+require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__.'/twig.php';
 
-require_once 'util.php';
-require_once 'db_conf.php';
-require_once 'db.php';
+require_once __DIR__.'/util.php';
+require_once __DIR__.'/db_conf.php';
+require_once __DIR__.'/db.php';
