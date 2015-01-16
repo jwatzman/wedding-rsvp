@@ -1,0 +1,23 @@
+{% extends "page.html" %}
+
+{% block title %}RSVP{% endblock %}
+{% block body %}
+<h1>RSVP</h1>
+{% if guests is not sameas(null) %}
+<h2>Results</h2>
+<table>
+	{% for guest in guests %}
+	<tr>
+		<td>{{ guest.name }}</td>
+	</tr>
+	{% else %}
+	<tr><td>No results.</td></tr>
+	{% endfor %}
+</table>
+{% endif %}
+<h2>Search</h2>
+<form action="index.php" method="GET">
+	Last Name: <input type="text" name="name">
+	<input type="submit">
+</form>
+{% endblock %}
