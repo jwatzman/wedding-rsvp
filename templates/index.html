@@ -9,6 +9,7 @@
 	{% for guest in guests %}
 	<tr>
 		<td>{{ guest.name }}</td>
+		<td><a href="rsvp.php?id={{ guest.party_id }}&akey={{ guest.akey }}">Continue</a></td>
 	</tr>
 	{% else %}
 	<tr><td>No results.</td></tr>
