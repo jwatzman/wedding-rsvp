@@ -1,3 +1,4 @@
 *.swp
-vendor
 lib/db_conf.php
+php-out
+vendor
