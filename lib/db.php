@@ -1,6 +1,6 @@
-<?php
+<?hh
 
-function db() {
+function db(): PDO {
 	static $db = null;
 	if (!$db) {
 		$db = new PDO(

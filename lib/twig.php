@@ -1,6 +1,6 @@
-<?php
+<?hh
 
-function t() {
+function t(): Twig_Environment {
 	static $twig = null;
 	if (!$twig) {
 		$twig = new Twig_Environment(

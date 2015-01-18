@@ -1,6 +1,6 @@
-<?php
+<?hh
 
-const DB_HOST = 'localhost';
-const DB_NAME = 'rsvp';
-const DB_USER = 'root';
-const DB_PASS = '';
+const string DB_HOST = 'localhost';
+const string DB_NAME = 'rsvp';
+const string DB_USER = 'root';
+const string DB_PASS = '';
