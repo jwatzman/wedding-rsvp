@@ -3,7 +3,7 @@
 {% block title %}RSVP{% endblock %}
 {% block body %}
 <h1>RSVP</h1>
-<form>
+<form action="rsvp.php?id={{ party.id }}&akey={{ party.akey }}" method="POST">
 	<table>
 		<tr>
 			<td>Name</td>
@@ -37,7 +37,6 @@
 		{% endfor %}
 	</table>
 	Comment: <input type="text" name="comment" value="{{ party.comment }}">
-	<input type="hidden" name="id" value="{{ party.id }}">
-	<input type="hidden" name="akey" value="{{ party.akey }}">
+	<input type="submit">
 </form>
 {% endblock %}

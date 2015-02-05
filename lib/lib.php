@@ -3,6 +3,8 @@
 error_reporting(E_ALL);
 ini_set('default_charset', 'utf-8');
 
+// TODO log everything
+
 require_once __DIR__.'/../vendor/autoload.php';
 require_once __DIR__.'/twig.php';
 

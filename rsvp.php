@@ -32,6 +32,56 @@ function main__rsvp() {
 		return;
 	}
 
+	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+		$update_guest_stmt = db()->prepare(
+			'UPDATE guests SET'
+			.' name = :name,'
+			.' response = :response,'
+			.' rehearsal_response = :rehearsal_response'
+			.' WHERE id = :id'
+		);
+
+		// OH HOW I LOVE REFERENCES
+		$name = null;
+		$response = null;
+		$rehearsal_response = null;
+		$guest_id = null;
+		$update_guest_stmt->bindParam(':name', $name);
+		$update_guest_stmt->bindParam(':response', $response);
+		$update_guest_stmt->bindParam(':rehearsal_response', $rehearsal_response);
+		$update_guest_stmt->bindParam(':id', $guest_id);
+
+		foreach ($guests as $guest) {
+			$guest_id = $guest['id'];
+			$name = $guest['name'];
+			if ($guest['is_plus_one']) {
+				$name = idx($_POST, 'name-'.$guest_id, $name);
+			}
+
+			$response = idx($_POST, 'response-'.$guest_id, 'y') === 'y';
+
+			if ($party['rehearsal_invited']) {
+				$rehearsal_response =
+					idx($_POST, 'rehearsal-response-'.$guest_id, 'y') === 'y';
+			} else {
+				$rehearsal_response = null;
+			}
+
+			$update_guest_stmt->execute();
+		}
+
+		$update_comment_stmt = db()->prepare(
+			'UPDATE parties SET comment = :comment WHERE id = :id'
+		);
+		$comment = idx($_POST, 'comment', '');
+		$update_comment_stmt->bindParam(':id', $party_id);
+		$update_comment_stmt->bindParam(':comment', $comment);
+		$update_comment_stmt->execute();
+
+		// TODO: output message when sucesfull
+		// TODO: write new data back into old arrays so it displays right
+	}
+
 	echo t()->render(
 		'rsvp.html',
 		array('guests' => $guests, 'party' => $party)
