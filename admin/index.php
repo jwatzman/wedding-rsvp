@@ -2,7 +2,7 @@
 
 require_once '../lib/lib.php';
 
-function main__admin-index(): void {
+function main__admin_index(): void {
 	$new_party_name = idx($_POST, 'new_party_name');
 	if (strlen($new_party_name) > 0) {
 		$stmt = db()->prepare(
@@ -30,4 +30,4 @@ function main__admin-index(): void {
 	echo t()->render('admin/index.html', array('parties' => $parties));
 }
 
-main__admin-index();
+main__admin_index();

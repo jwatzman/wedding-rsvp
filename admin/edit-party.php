@@ -2,7 +2,7 @@
 
 require_once '../lib/lib.php';
 
-function main__admin-edit-party(): void {
+function main__admin_edit_party(): void {
 	$id = idx($_GET, 'id');
 	if ($id === null) {
 		echo "No id\n";
@@ -47,4 +47,4 @@ function main__admin-edit-party(): void {
 	);
 }
 
-main__admin-edit-party();
+main__admin_edit_party();
