@@ -12,16 +12,27 @@
 		</tr>
 		{% for guest in guests %}
 		<tr>
-			<td>{{ guest.name }} (TODO: plus one)</td>
+			<td>
+				{% if guest.is_plus_one %}
+				Plus one: <input type="text" name="name-{{ guest.id }}" value="{{ guest.name }}">
+				{% else %}
+				{{ guest.name }}
+				{% endif %}
+			</td>
 			<td>
 				<select name="response-{{ guest.id }}">
 					<option value="y" {% if guest.response is sameas(1) %}selected{% endif %}>Attending</option>
 					<option value="n" {% if guest.response is sameas(0) %}selected{% endif %}>Not Attending</option>
 				</select>
 			</td>
+			{% if party.rehearsal_invited %}
 			<td>
-				TODO: rehearsal response
+				<select name="rehearsal-response-{{ guest.id }}">
+					<option value="y" {% if guest.rehearsal_response is sameas(1) %}selected{% endif %}>Attending</option>
+					<option value="n" {% if guest.rehearsal_response is sameas(0) %}selected{% endif %}>Not Attending</option>
+				</select>
 			</td>
+			{% endif %}
 		</tr>
 		{% endfor %}
 	</table>
