@@ -2,10 +2,12 @@
 {% import _self as self %}
 
 {% macro response(v) %}
-{% if v is sameas(0) %}
-N
-{% elseif v is sameas(1) %}
+{% if v is sameas(null) %}
+-
+{% elseif v %}
 Y
+{% else %}
+N
 {% endif %}
 {% endmacro %}
 
