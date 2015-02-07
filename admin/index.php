@@ -2,6 +2,8 @@
 
 require_once '../lib/lib.php';
 
+enforce_admin();
+
 function main__admin_index(): void {
 	$new_party_name = idx($_POST, 'new_party_name');
 	if (strlen($new_party_name) > 0) {

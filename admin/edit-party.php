@@ -2,6 +2,8 @@
 
 require_once '../lib/lib.php';
 
+enforce_admin();
+
 function main__admin_edit_party(): void {
 	$id = idx($_GET, 'id');
 	if ($id === null) {

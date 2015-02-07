@@ -1,0 +1,14 @@
+{% extends "page.html" %}
+
+{% block title %}Admin Auth{% endblock %}
+{% block body %}
+<h1>Authenticate</h1>
+{% if authenticated %}
+<h2>You are authenticated.</h2>
+{% else %}
+<form action="auth.php" method="POST">
+	Password: <input type="text" name="password">
+	<input type="submit">
+</form>
+{% endif %}
+{% endblock %}
