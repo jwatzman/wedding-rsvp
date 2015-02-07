@@ -3,6 +3,11 @@
 {% block title %}RSVP{% endblock %}
 {% block body %}
 <h1>RSVP</h1>
+{% if saved %}
+<div class="saved">
+	<h2>RSVP saved!</h2><span>If you need to update your RSVP, now or later, just resubmit this form.</span>
+</div>
+{% endif %}
 <form action="rsvp.php?id={{ party.id }}&akey={{ party.akey }}" method="POST">
 	<table>
 		<tr>

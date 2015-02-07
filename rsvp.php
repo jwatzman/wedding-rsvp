@@ -47,6 +47,7 @@ function main__rsvp() {
 	}
 	/* UNSAFE_EXPR */ unset($guest);
 
+	$saved = false;
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$update_guest_stmt = db()->prepare(
 			'UPDATE guests SET'
@@ -97,13 +98,12 @@ function main__rsvp() {
 		$update_comment_stmt->bindParam(':id', $party_id);
 		$update_comment_stmt->bindParam(':comment', $party['comment']);
 		$update_comment_stmt->execute();
-
-		// TODO: output message when sucesfull
+		$saved = true;
 	}
 
 	echo t()->render(
 		'rsvp.html',
-		array('guests' => $guests, 'party' => $party)
+		array('guests' => $guests, 'party' => $party, 'saved' => $saved)
 	);
 }
 
