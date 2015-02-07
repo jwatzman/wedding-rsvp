@@ -1,0 +1,33 @@
+{% extends "page.html" %}
+{% import _self as self %}
+
+{% macro response(v, i) %}
+{% if i and v is sameas(null) %}
+-
+{% elseif i and v %}
+Y
+{% elseif i and not v %}
+N
+{% elseif not i and v is sameas(null) %}
+{% else %}
+!
+{% endif %}
+{% endmacro %}
+
+{% block title %}Summary{% endblock %}
+{% block body %}
+<h1>Summary</h1>
+<table>
+	<tr>
+		<td>Guest Name</td>
+		<td>Response</td>
+		<td>Rehearsal Response</td>
+	</tr>
+	{% for guest in guests %}
+	<tr>
+		<td>{{ guest.name }}</td>
+		<td>{{ self.response(guest.response, 1) }}</td>
+		<td>{{ self.response(guest.rehearsal_response, guest.rehearsal_invited) }}</td>
+	</tr>
+	{% endfor %}
+{% endblock %}
