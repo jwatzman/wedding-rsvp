@@ -21,15 +21,15 @@
 			</td>
 			<td>
 				<select name="response-{{ guest.id }}">
-					<option value="y" {% if guest.response is sameas(1) or guest.response is sameas("1") %}selected{% endif %}>Attending</option>
-					<option value="n" {% if guest.response is sameas(0) or guest.response is sameas("0") %}selected{% endif %}>Not Attending</option>
+					<option value="y" {% if guest.response is sameas(1) %}selected{% endif %}>Attending</option>
+					<option value="n" {% if guest.response is sameas(0) %}selected{% endif %}>Not Attending</option>
 				</select>
 			</td>
 			{% if party.rehearsal_invited %}
 			<td>
 				<select name="rehearsal-response-{{ guest.id }}">
-					<option value="y" {% if guest.rehearsal_response is sameas(1) or guest.rehearsal_response is sameas("1") %}selected{% endif %}>Attending</option>
-					<option value="n" {% if guest.rehearsal_response is sameas(0) or guest.rehearsal_response is sameas("0") %}selected{% endif %}>Not Attending</option>
+					<option value="y" {% if guest.rehearsal_response is sameas(1) %}selected{% endif %}>Attending</option>
+					<option value="n" {% if guest.rehearsal_response is sameas(0) %}selected{% endif %}>Not Attending</option>
 				</select>
 			</td>
 			{% endif %}

@@ -32,6 +32,21 @@ function main__rsvp() {
 		return;
 	}
 
+	foreach ($guests as &$guest) {
+		// Depending on which exact mysql PDO driver you have, these may come
+		// back as strings or ints.
+		$r = $guest['response'];
+		if ($r !== null) {
+			$guest['response'] = (int)$r;
+		}
+
+		$r = $guest['rehearsal_response'];
+		if ($r !== null) {
+			$guest['rehearsal_response'] = (int)$r;
+		}
+	}
+	/* UNSAFE_EXPR */ unset($guest);
+
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$update_guest_stmt = db()->prepare(
 			'UPDATE guests SET'
