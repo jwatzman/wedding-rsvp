@@ -66,7 +66,7 @@ function main__rsvp() {
 		$update_guest_stmt->bindParam(':rehearsal_response', $rehearsal_response);
 		$update_guest_stmt->bindParam(':id', $guest_id);
 
-		foreach ($guests as $guest) {
+		foreach ($guests as &$guest) {
 			$guest_id = $guest['id'];
 			$name = $guest['name'];
 			if ($guest['is_plus_one']) {
@@ -83,18 +83,22 @@ function main__rsvp() {
 			}
 
 			$update_guest_stmt->execute();
+
+			$guest['name'] = $name;
+			$guest['response'] = $response;
+			$guest['rehearsal_response'] = $rehearsal_response;
 		}
+		/* UNSAFE_EXPR */ unset($guest);
 
 		$update_comment_stmt = db()->prepare(
 			'UPDATE parties SET comment = :comment WHERE id = :id'
 		);
-		$comment = idx($_POST, 'comment', '');
+		$party['comment'] = idx($_POST, 'comment', '');
 		$update_comment_stmt->bindParam(':id', $party_id);
-		$update_comment_stmt->bindParam(':comment', $comment);
+		$update_comment_stmt->bindParam(':comment', $party['comment']);
 		$update_comment_stmt->execute();
 
 		// TODO: output message when sucesfull
-		// TODO: write new data back into old arrays so it displays right
 	}
 
 	echo t()->render(
