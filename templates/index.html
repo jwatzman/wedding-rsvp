@@ -8,21 +8,18 @@
 {% endif %}
 {% if guests is not sameas(null) %}
 <h2>Results</h2>
-<table>
-	{% for guest in guests %}
-	<tr>
-		<td>{{ guest.name }}</td>
-		<td><a href="rsvp.php?id={{ guest.party_id }}&akey={{ guest.akey }}">Continue</a></td>
-	</tr>
-	{% else %}
-	<tr><td>No results.</td></tr>
-	{% endfor %}
-</table>
+{% for guest in guests %}
+<div>
+	<a href="rsvp.php?id={{ guest.party_id }}&akey={{ guest.akey }}">{{ guest.name }}</a>
+</div>
+{% else %}
+<div>No results.</div>
+{% endfor %}
 {% endif %}
-<h2>Search</h2>
+<h2>Search {% if guests is sameas(null) %}for your Party{% else %}Again{% endif %}</h2>
 <form action="index.php" method="GET">
-	Last Name: <input type="text" name="name" {% if name is not sameas(null) %}value="{{ name }}"{% endif %}>
-	Password: <input type="text" name="password" {% if password is not sameas(null) %}value="{{ password }}"{% endif %}>
-	<input type="submit">
+	<div>Last Name: <input type="text" name="name" {% if name is not sameas(null) %}value="{{ name }}"{% endif %}></div>
+	<div>Password: <input type="text" name="password" {% if password is not sameas(null) %}value="{{ password }}"{% endif %}></div>
+	<div><input type="submit" value="Search"></div>
 </form>
 {% endblock %}

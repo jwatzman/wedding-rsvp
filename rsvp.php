@@ -94,7 +94,7 @@ function main__rsvp() {
 		$update_comment_stmt = db()->prepare(
 			'UPDATE parties SET comment = :comment WHERE id = :id'
 		);
-		$party['comment'] = idx($_POST, 'comment', '');
+		$party['comment'] = substr(idx($_POST, 'comment', ''), 0, 2048);
 		$update_comment_stmt->bindParam(':id', $party_id);
 		$update_comment_stmt->bindParam(':comment', $party['comment']);
 		$update_comment_stmt->execute();

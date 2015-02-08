@@ -11,9 +11,9 @@
 <form action="rsvp.php?id={{ party.id }}&akey={{ party.akey }}" method="POST">
 	<table>
 		<tr>
-			<td>Name</td>
-			<td>Response</td>
-			{% if party.rehearsal_invited %}<td>Rehearsal Response</td>{% endif %}
+			<td><b>Name</b></td>
+			<td><b>Attending?</b></td>
+			{% if party.rehearsal_invited %}<td><b>Attending Rehearsal Dinner?</b></td>{% endif %}
 		</tr>
 		{% for guest in guests %}
 		<tr>
@@ -41,7 +41,8 @@
 		</tr>
 		{% endfor %}
 	</table>
-	Comment: <input type="text" name="comment" value="{{ party.comment }}">
-	<input type="submit">
+	<div>Comment for the Bride and Groom?</div>
+	<div><textarea maxlen=2048 name="comment">{{ party.comment }}</textarea></div>
+	<div><input type="submit" value="Save"></div>
 </form>
 {% endblock %}
