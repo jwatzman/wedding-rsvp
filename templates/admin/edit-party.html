@@ -15,11 +15,11 @@ N
 {% block body %}
 <h1>Edit Party: {{ party_name }}</h1>
 <table>
-	<tr>
+	<thead><tr>
 		<td>Name</td>
 		<td>Response</td>
 		<td>Rehearsal Response</td>
-	</tr>
+	</tr></thead>
 	{% for guest in guests %}
 	<tr>
 		{% if guest.is_plus_one %}

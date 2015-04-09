@@ -10,11 +10,11 @@
 {% endif %}
 <form action="rsvp.php?id={{ party.id }}&akey={{ party.akey }}" method="POST">
 	<table>
-		<tr>
-			<td><b>Name</b></td>
-			<td><b>Attending?</b></td>
-			{% if party.rehearsal_invited %}<td><b>Attending Rehearsal Dinner?</b></td>{% endif %}
-		</tr>
+		<thead><tr>
+			<td>Name</td>
+			<td>Attending?</td>
+			{% if party.rehearsal_invited %}<td>Attending Rehearsal Dinner?</td>{% endif %}
+		</tr></thead>
 		{% for guest in guests %}
 		<tr>
 			<td>

@@ -18,16 +18,16 @@ N
 {% block body %}
 <h1>Summary</h1>
 <table>
-	<tr>
+	<thead><tr>
 		<td>Guest Name</td>
 		<td>Response</td>
 		<td>Rehearsal Response</td>
-	</tr>
+	</tr></thead>
 	{% for guest in guests %}
 	<tr>
 		<td>{{ guest.name }}</td>
-		<td>{{ self.response(guest.response, 1) }}</td>
-		<td>{{ self.response(guest.rehearsal_response, guest.rehearsal_invited) }}</td>
+		<td><b>{{ self.response(guest.response, 1) }}</b></td>
+		<td><b>{{ self.response(guest.rehearsal_response, guest.rehearsal_invited) }}</b></td>
 	</tr>
 	{% endfor %}
 {% endblock %}

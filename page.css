@@ -25,6 +25,10 @@ textarea {
 	width: 100%;
 }
 
+thead {
+	font-weight: bold;
+}
+
 .saved {
 	margin-bottom: 20px;
 }
