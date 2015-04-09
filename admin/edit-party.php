@@ -10,6 +10,7 @@ function main__admin_edit_party(): void {
 		echo "No id\n";
 		return;
 	}
+	$id = (int)$id;
 
 	$stmt = db()->prepare('SELECT name FROM parties WHERE id = ?');
 	$stmt->execute(array($id));
@@ -19,17 +20,10 @@ function main__admin_edit_party(): void {
 	}
 	$party_name = $party['name'];
 
-	$new_guest_name = idx($_POST, 'new_guest_name');
+	$new_guest_name = idx($_POST, 'new_guest_name', '');
 	if (strlen($new_guest_name) > 0) {
-		$stmt = db()->prepare(
-			'INSERT INTO guests (name, party_id, is_plus_one)'
-			.' VALUES (:name, :party_id, :is_plus_one)'
-		);
-		$stmt->bindParam(':name', $new_guest_name);
-		$stmt->bindParam(':party_id', $id);
 		$is_plus_one = (bool)idx($_POST, 'plus_one', false);
-		$stmt->bindParam(':is_plus_one', $is_plus_one);
-		$stmt->execute();
+		add_guest($id, $new_guest_name, $is_plus_one);
 	}
 
 	$stmt = db()->prepare(
