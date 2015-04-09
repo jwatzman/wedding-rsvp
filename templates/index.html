@@ -3,9 +3,6 @@
 {% block title %}RSVP{% endblock %}
 {% block body %}
 <h1>RSVP</h1>
-{% if password is not sameas(null) and not password_valid %}
-<h2>Invalid password!</h2>
-{% endif %}
 {% if guests is not sameas(null) %}
 <h2>Results</h2>
 {% for guest in guests %}
@@ -19,7 +16,6 @@
 <h2>Search {% if guests is sameas(null) %}for your Party{% else %}Again{% endif %}</h2>
 <form action="index.php" method="GET">
 	<div>Last Name: <input type="text" name="name" {% if name is not sameas(null) %}value="{{ name }}"{% endif %}></div>
-	<div>Password: <input type="text" name="password" {% if password is not sameas(null) %}value="{{ password }}"{% endif %}></div>
 	<div><input type="submit" value="Search"></div>
 </form>
 {% endblock %}
