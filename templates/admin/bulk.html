@@ -1,0 +1,12 @@
+{% extends "page.html" %}
+
+{% block title %}Bulk Add{% endblock %}
+{% block body %}
+<h1>Bulk Add</h1>
+<form action="bulk.php" method="POST">
+	<div>
+		<textarea name="bulk_data" rows="50" autofocus></textarea>
+	</div>
+	<input type="submit">
+</form>
+{% endblock %}
