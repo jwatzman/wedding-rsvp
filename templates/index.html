@@ -15,7 +15,7 @@
 {% endif %}
 <h2>Search {% if guests is sameas(null) %}for your Party{% else %}Again{% endif %}</h2>
 <form action="index.php" method="GET">
-	<div>Last Name: <input type="text" name="name" {% if name is not sameas(null) %}value="{{ name }}"{% endif %}></div>
+	<div>Last Name: <input type="text" name="name" autofocus {% if name is not sameas(null) %}value="{{ name }}"{% endif %}></div>
 	<div><input type="submit" value="Search"></div>
 </form>
 {% endblock %}
