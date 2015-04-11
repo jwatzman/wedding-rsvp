@@ -17,17 +17,33 @@ N
 {% block title %}Summary{% endblock %}
 {% block body %}
 <h1>Summary</h1>
+<h2>Totals</h2>
+<div>Attending: {{ total_attending }}</div>
+<div>Responded: {{ total_responses }}</div>
+<div>Invited: {{ total_guests }}</div>
+<h2>Responses</h2>
 <table>
 	<thead><tr>
 		<td>Guest Name</td>
 		<td>Response</td>
 		<td>Rehearsal Response</td>
 	</tr></thead>
-	{% for guest in guests %}
-	<tr>
-		<td>{{ guest.name }}</td>
-		<td><b>{{ self.response(guest.response, 1) }}</b></td>
-		<td><b>{{ self.response(guest.rehearsal_response, guest.rehearsal_invited) }}</b></td>
-	</tr>
+	{% for guests in guests_by_party %}
+		{% for guest in guests %}
+		<tr>
+			{% if guest.is_plus_one %}
+			  {% if guest.name %}
+			    <td><i>{{ guest.name }}</i></td>
+			  {% else %}
+			    <td><i>(unnamed plus-one)</i></td>
+			  {% endif %}
+			{% else %}
+			  <td>{{ guest.name }}</td>
+			{% endif %}
+			<td><b>{{ self.response(guest.response, 1) }}</b></td>
+			<td><b>{{ self.response(guest.rehearsal_response, guest.rehearsal_invited) }}</b></td>
+		</tr>
+		{% endfor %}
+		<tr><td><br></td></tr>
 	{% endfor %}
 {% endblock %}
