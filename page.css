@@ -32,3 +32,8 @@ thead {
 .saved {
 	margin-bottom: 20px;
 }
+
+.foot {
+	font-weight: bold;
+	margin-top: 20px;
+}

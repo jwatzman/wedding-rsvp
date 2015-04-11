@@ -9,3 +9,5 @@ const string DB_PASS = '';
  * STORED IN A COOKIE AND SENT IN THE CLEAR. Don't use something particularly
  * valuable. */
 const string ADMIN_PASS = 'admin';
+
+const string EMAIL = 'example@example.com';
