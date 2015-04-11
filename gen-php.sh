@@ -19,6 +19,7 @@ find php-out -name '*.php' -exec sed -i '' '/HACKLIB_ROOT/ d' '{}' ';'
 
 cp lib/idx.php php-out/lib/idx.php
 cp page.css php-out/page.css
+cp admin/page.css php-out/admin/page.css
 cp -r vendor php-out/
 cp -r templates php-out/
 
