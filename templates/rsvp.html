@@ -5,9 +5,11 @@
 <h1>RSVP</h1>
 {% if saved %}
 <div class="saved">
-	<h2>RSVP saved!</h2><span>If you need to update your RSVP, now or later, just resubmit this form.</span>
+	<h2>RSVP saved!</h2>
+	<div>If you need to update your RSVP, now or later, just resubmit this form.</div>
+	<div><a href="rsvp.php?id={{ party.id }}&akey={{ party.akey }}">Back</a></div>
 </div>
-{% endif %}
+{% else %}
 <form action="rsvp.php?id={{ party.id }}&akey={{ party.akey }}" method="POST">
 	<table>
 		<thead><tr>
@@ -45,4 +47,5 @@
 	<div><textarea maxlen=2048 name="comment">{{ party.comment }}</textarea></div>
 	<div><input type="submit" value="Save"></div>
 </form>
+{% endif %}
 {% endblock %}
