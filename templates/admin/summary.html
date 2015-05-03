@@ -14,12 +14,16 @@ N
 {% endif %}
 {% endmacro %}
 
+{% macro pct(n, d) %}{{ (n / d * 100)|round(2) }}%{% endmacro %}
+
 {% block title %}Summary{% endblock %}
 {% block body %}
 <h1>Summary</h1>
 <h2>Totals</h2>
-<div>Attending: {{ total_attending }}</div>
-<div>Responded: {{ total_responses }}</div>
+<div>Attending: {{ total_attending }} ({{ self.pct(total_attending, total_guests) }})</div>
+<div>Responded: {{ total_responses }} ({{ self.pct(total_responses, total_guests) }})</div>
+{% set pending = total_guests - total_responses %}
+<div>Pending: {{ pending  }} ({{ self.pct(pending, total_guests) }})</div>
 <div>Invited: {{ total_guests }}</div>
 <h2>Responses</h2>
 <table>
